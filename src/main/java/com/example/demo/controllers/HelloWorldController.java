@@ -27,7 +27,7 @@ public class HelloWorldController {
 	public ModelAndView message(@RequestParam(required = false, defaultValue = "«silence»") String shoutMessage) {
 		Yeller loud = new Yeller(shoutMessage);
 		String result = loud.makeUpperCase();
-		ModelAndView mv = new ModelAndView("helloworld/message");
+		ModelAndView mv = new ModelAndView("helloworld/yeller");
 		mv.addObject("title", title);
 		mv.addObject("message", result);
 		return mv;
