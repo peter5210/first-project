@@ -18,8 +18,14 @@ import com.example.demo.model.Subtractor;
 @Controller
 @RequestMapping("/math")
 public class MathController {
+	
+	  
+	@GetMapping("calculator")
+	public String start() {
+		return "math/calculator-start";
+	}
 
-	//adding
+	
 	@PostMapping("calculator")
 	public ModelAndView mathTwoNumbers(@RequestParam(name = "left") int first, @RequestParam(name = "right") double second, @RequestParam(name = "mathChoice") String mathChoice, Model model) {
 		
@@ -43,17 +49,11 @@ public class MathController {
 		} else {	
 			Exponent exponent = new Exponent(first, second);
 			result = exponent.calculate();	
-			}
+		}
 	
 		ModelAndView mv = new ModelAndView("math/calculator-result");
 		mv.addObject("sum", result); 
 		return mv;
-	}
-	
-
-	@GetMapping("calculator")
-	public String adder() {
-		return "math/calculator";
 	}
 	
 }	
